@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <context-param>
+  <param-name>FirstName</param-name>
+  <param-value>Sagar</param-value>
+  </context-param>
+  
+  <context-param>
+  <param-name>LastName</param-name>
+  <param-value>Patil</param-value>
+  </context-param>
 </web-app>
