@@ -19,4 +19,24 @@
   <param-name>LastName</param-name>
   <param-value>Patil</param-value>
   </context-param>
+  
+  <servlet>
+  <servlet-name>initparameter</servlet-name>
+  <servlet-class>example.InitParamServlet</servlet-class>
+  
+  <init-param>
+  <param-name>Dbname1</param-name>
+  <param-value>mysql</param-value>
+  </init-param>
+  
+  <init-param>
+  <param-name>Dbname2</param-name>
+  <param-value>Oracle</param-value>
+  </init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>initparameter</servlet-name>
+  <url-pattern>/init</url-pattern>
+  </servlet-mapping>
 </web-app>

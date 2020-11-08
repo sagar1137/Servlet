@@ -3,21 +3,27 @@ package example;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.ServletContext;
+import javax.jws.soap.InitParam;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
-		name = "InitContext",
+		name = "initparam",
 		urlPatterns = {
-				"/context"
+				"/init1"
+		},
+		initParams = {
+				@WebInitParam(name="db1" ,value="mysql1"),
+				@WebInitParam(name="db2" ,value="oracle1")
 		}
 		)
-public class ContextParamServlet extends HttpServlet{
-
+public class InitParamServlet extends HttpServlet{
+	
 	/**
 	 * 
 	 */
@@ -25,13 +31,13 @@ public class ContextParamServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		ServletContext context=this.getServletContext();
+		ServletConfig config=this.getServletConfig();
 		PrintWriter printWriter=resp.getWriter();
-		printWriter.append("First Name: " +context.getInitParameter("FirstName"));
-printWriter.append("Last Name: " +context.getInitParameter("LastName"));
+		
+		printWriter.append("Databsase 1:" + config.getInitParameter("db1"))
+		.append("Database 2:" + config.getInitParameter("db2"));
 		
 	}
-	
 	
 
 }
